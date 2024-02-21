@@ -31,6 +31,9 @@ public class MappingTest {
     @Test
     //@Transactional
     void create() {
+        log.info("EntityManager = {}", entityManager.getClass());
+        log.info("this = {}", this.getClass());
+
         // given
         Role role = Role.builder().name("학생").build();
         User user = User.builder().name("민수").role(role).createdAt(new Timestamp(System.currentTimeMillis())).build();
@@ -49,6 +52,8 @@ public class MappingTest {
 
     @Test
     void get() {
+        log.info("EntityManager = {}", entityManager.getClass());
+        log.info("this = {}", this.getClass());
         // given
         Role role = entityManager.find(Role.class, 16);
         User user = entityManager.find(User.class, 16);
