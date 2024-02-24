@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +18,7 @@ public class Category {
 
     private String name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "category")
     private Set<CategoryItem> categoryItemSet = new HashSet<>();
 }

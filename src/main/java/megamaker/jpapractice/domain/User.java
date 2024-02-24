@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,8 +20,11 @@ public class User {
     private String name;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Post> post;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Timestamp createdAt;

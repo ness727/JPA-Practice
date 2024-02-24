@@ -3,10 +3,6 @@ package megamaker.jpapractice.domain.manytomany;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @IdClass(CategoryItemId.class)
 @Entity
@@ -22,4 +18,10 @@ public class CategoryItem {
     @JoinColumn(name = "item_id")
     private Item item;
 
+    public CategoryItem(Category category, Item item) {
+        this.category = category;
+        this.item = item;
+        category.getCategoryItemSet().add(this);
+        item.getCategoryItemSet().add(this);
+    }
 }
